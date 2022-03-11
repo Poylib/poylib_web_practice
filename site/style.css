@@ -1,9 +1,18 @@
+/* 폰트 불러오기 */
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@700&display=swap');
+
 /* 전체 영역 지정 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box; /* 박스 영역은 테두리까지 지정 */
 }
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+} /* 다른영역에서도 사용하게 상단에 배치하는게 좋다 */
 #container {
   margin: 0 auto;
   width: 1200px;
@@ -13,7 +22,7 @@
 header {
   width: 100%;
   height: 100px;
-  background-color: blue;
+  background-color: #07c;
 }
 
 /* 로고 영역 */
@@ -21,7 +30,15 @@ header {
   float: left;
   width: 250px;
   height: 100px;
-  background-color: indigo;
+  line-height: 100px; /* height값과 같게 만들어서 세로로 중간에 오도록 맞춤 */
+  padding-left: 20px;
+}
+#logo h1 {
+  font-family: 'Merienda', cursive;
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  text-shadow: 0 -1px 0 #222;
 }
 
 /* 내비게이션 영역 */
@@ -29,9 +46,53 @@ nav {
   float: right;
   width: 900px;
   height: 100px;
-  background-color: green;
+  padding-top: 40px;  /* nav의 height가 100px이고 topMenu의 height를 60px로 만들기 위해 */
 }
 
+#topMenu {
+  height: 60px;
+}
+#topMenu > li {
+  float: left;   /* 우선 메뉴를 왼쪽으로 플로팅 */
+  position: relative; /* 서브 메뉴를 absolute로 만들기 위해서 */
+}
+#topMenu > li > a {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 1px #07c;
+  padding: 20px 60px;
+}
+#topMenu > li > a > span {
+  font-size: 0.5em;
+}
+#topMenu > li > a:hover {
+  color: #000;
+  text-shadow: 0 -1px #07c;
+}
+#topMenu > li > ul {
+   display: none;   /* 서브메뉴를 처음에는 감추기 위해서 */
+  position: absolute;
+  width: 160px;
+  background-color: rgba(255, 255, 255, 0.6);  /* 배경 투명색으로 지정 */
+  left: 20px;
+  margin: 0;
+}
+#topMenu > li > ul > li {
+  padding: 10px 10px 10px 30px;
+}
+#topMenu > li > ul > li > a {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+}
+#topMenu > li:hover > ul {
+  display: block;  /* 메인메뉴 항목위로 오버하면 서브메뉴 표시 */
+  z-index: 10;  /* 슬라이드쇼에 가려지지 않게 */
+}
+#topMenu > li > ul > li > a:hover {
+  color: #f00;
+}
 /* 이미지 슬라이드 쇼 영역 */
 #slideShow {
   clear: both;  /*플로팅 해제*/
